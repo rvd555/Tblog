@@ -12,11 +12,12 @@
 ## 评论
 用多说
 
-
+## 副文本
+djangoUeditor
 
 ## admin
-使用
-Xadmin
+之前用过几次Xadmin，已经比较熟悉Xadmin了，而且Xadmin不兼容djangoUediter。   
+github上偶遇DjnagoSuit，之前也有伙伴推荐过，看着很好，想试用一下。    
 
 
 ## 前台
