@@ -25,6 +25,6 @@ jquery mobile
 
 
 ### 图片处理
-本来是想用django-stdimage的，因为它是个神器，详见[Xadmin中形成缩略图](http://tulpar008.github.io/xadmin-list_displayzhong-xian-shi-suo-lue-tu.html)    
-##### 后来偶遇看到一个神器django-imagekit，决定用它，原因很简单，没用过。
+本来是想用django-stdimage的，因为它是个神器，详见[Xadmin中形成缩略图](http://tulpar008.github.io/xadmin-list_displayzhong-xian-shi-suo-lue-tu.html)
+看到一个神器django-imagekit
 
