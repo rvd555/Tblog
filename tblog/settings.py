@@ -1,6 +1,6 @@
 #coding:utf-8
 
-from django.utils.translation import ugettext_lazy as _
+
 """
 Django settings for tblog project.
 
@@ -14,7 +14,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+# import ugettext_lazy for location
+from django.utils.translation import ugettext_lazy as _
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -40,6 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # My apps
+    'apps.blog',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -112,21 +115,28 @@ SUIT_CONFIG = {
 
     # menu
     # 'SEARCH_URL': '/admin/auth/user/',
-    # 'MENU_ICONS': {
+    'MENU_ICONS': {
     #    'sites': 'icon-leaf',
-    #    'auth': 'icon-lock',
-    # },
+        'auth': 'icon-lock',
+        'blog': 'icon-leaf',
+    },
     # 'MENU_OPEN_FIRST_CHILD': True, # Default True
     # 'MENU_EXCLUDE': ('auth.group',),
     'MENU': (
         # 'sites',
-        #{'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
-        {'label': _('Auth'), 'icon':'icon-lock', 'models': ('auth.user', 'auth.group')},
+        # 'auth',
+        # Rename app and set icon
+        # {'app': 'auth', 'label': 'Authorization', 'icon':'icon-lock'},
+        #
+        # {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
+        # {'label': _('Auth'), 'icon':'icon-lock', 'models': ('auth.user', 'auth.group')},
+
+        # {'app': 'apps.blog', 'icon':'icon-leaf', 'models': ('Article', 'Category')},
+        # {'label': _('Blog'), 'icon':'icon-leaf', 'models': ('apps.blog.Article', 'apps.blog.Category')},
         #{'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
     ),
 
     # misc
     # 'LIST_PER_PAGE': 15
 }
-
 #### End

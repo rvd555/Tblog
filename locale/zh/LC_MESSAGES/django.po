@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-08 15:30+0800\n"
-"PO-Revision-Date: 2014-09-08 15:31+0800\n"
+"POT-Creation-Date: 2014-09-11 01:02+0800\n"
+"PO-Revision-Date: 2014-09-11 01:06+0800\n"
 "Last-Translator: Tulpar <tulpar008@gmail.com>\n"
 "Language-Team: Tulpar\n"
 "Language: zh_CN\n"
@@ -17,14 +17,99 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Virtaal 0.7.0\n"
 
-#: mm/views.py:8
-msgid "Welocome!"
-msgstr "欢迎！"
+#: apps/blog/models.py:16
+msgid "Publish"
+msgstr "发布"
 
-#: tblog/settings.py:106
-msgid "T-Blog"
-msgstr "T的博客"
+#: apps/blog/models.py:17
+msgid "Draft"
+msgstr "草稿"
 
-#: tblog/settings.py:125
-msgid "Auth"
+#: apps/blog/models.py:18
+msgid "Delete"
+msgstr "删除"
+
+#: apps/blog/models.py:29
+msgid "Name"
+msgstr "名字"
+
+#: apps/blog/models.py:31
+msgid "Description"
+msgstr "描述"
+
+#: apps/blog/models.py:31
+msgid "Description of a category."
+msgstr "描述"
+
+#: apps/blog/models.py:33
+msgid "Display on the navbar."
+msgstr "是否显示在导航条上"
+
+#: apps/blog/models.py:36
+msgid "Parent category."
+msgstr "父级分类"
+
+#: apps/blog/models.py:38
+msgid "Display order."
+msgstr "显示顺序"
+
+#: apps/blog/models.py:39 apps/blog/models.py:79
+msgid "Status"
+msgstr "状态"
+
+#: apps/blog/models.py:41 apps/blog/models.py:84
+msgid "Create Time"
+msgstr "创建时间"
+
+#: apps/blog/models.py:42 apps/blog/models.py:85
+msgid "Update Time"
+msgstr "更新时间"
+
+#: apps/blog/models.py:60
+msgid "Category"
+msgstr "分类"
+
+#: apps/blog/models.py:70
+#, fuzzy
+#| msgid "Auth"
+msgid "Author"
 msgstr "账户"
+
+#: apps/blog/models.py:73
+msgid "Title"
+msgstr "题目"
+
+#: apps/blog/models.py:75
+msgid "Tags"
+msgstr "标签"
+
+#: apps/blog/models.py:75
+msgid "Use the comma(',') separated"
+msgstr "用英文','分隔"
+
+#: apps/blog/models.py:77
+msgid "Content"
+msgstr "内容"
+
+#: apps/blog/models.py:82
+msgid "Top"
+msgstr "置顶"
+
+#: apps/blog/models.py:135
+msgid "Article"
+msgstr "文章"
+
+#: tblog/settings.py:108
+msgid "T-Blog"
+msgstr "Tulpar的博客"
+
+#~ msgid "Auth"
+#~ msgstr "账户"
+
+#, fuzzy
+#~| msgid "T-Blog"
+#~ msgid "Blog"
+#~ msgstr "T的博客"
+
+#~ msgid "Welocome!"
+#~ msgstr "欢迎！"
