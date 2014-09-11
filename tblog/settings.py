@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
 # import ugettext_lazy for location
 from django.utils.translation import ugettext_lazy as _
 
@@ -140,3 +141,21 @@ SUIT_CONFIG = {
     # 'LIST_PER_PAGE': 15
 }
 #### End
+
+## Begin. Settings for MEDIA, STATIC, TEMPLATE
+MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media'),
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'public/static/')
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    #os.path.join(BASE_DIR, 'public/static/'),
+    )
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'public/templates/'),
+)
+
+## End

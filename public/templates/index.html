@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block main %}
+{% for item in available_category_list %}
+{{ item }}<BR>
+{% endfor %}
+{% for item in hot_article_list %}
+{{ item.title }}<BR>
+{% endfor %}
+{% for item in recently_articles_list %}
+{{ item.title }}<BR>
+{% endfor %}
+{% endblock %}

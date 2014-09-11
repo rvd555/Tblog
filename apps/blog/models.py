@@ -24,7 +24,7 @@ class Category(models.Model):
     Categories are high level constructs to be used for grouping and organizing content, 
     thus creating a site's table of contents.
     #
-    Use Category.available_list() to get available categorys list.
+    Use Category.available_list(AVAILABLE_CATEGORYS_NUM) to get available categorys list.
     """
     name = models.CharField(max_length=40, verbose_name=_(u'Name'))
     desc = models.CharField(max_length=100, blank=True, \
@@ -48,12 +48,12 @@ class Category(models.Model):
             return '%s' % (self.name)
 
     @classmethod
-    def available_list(cls):
+    def available_list(cls, num):
         """
         A simple classmethod.
-        Use Category.available_list() to get available categorys list.
+        Use Category.available_list(AVAILABLE_CATEGORYS_NUM) to get available categorys list.
         """
-        return cls.objects.filter(status=0)
+        return cls.objects.filter(status=0)[:num]
 
     class Meta:
         ordering = ['rank', '-create_time']
@@ -63,12 +63,12 @@ class Category(models.Model):
 class Article(models.Model):
     """
     A simple model.
-    Use Post.get_recently_posts(RECENTLY_NUM) to get recently(RECENTLY_NUM) posts.
-    Use Post.get_hots_posts(HOT_NUM) to get hot(HOT_NUM) posts.
-    Use post_object.related_posts to get related_posts of an object.
+    Use Article.get_recently_articles(RECENTLY_ARTICLES_NUM) to get recently(RECENTLY_ARTICLES_NUM) articles.
+    Use Article.get_hots_articles(HOT_ARTICLES_NUM) to get hot(HOT_ARTICLES_NUM) articles.
+    Use article_object.related_articles(REALITVE_ARTICLES_NUM) to get related_articles of an object.
     """
     author = models.ForeignKey(User, verbose_name=_(u"Author"))
-    category = models.ForeignKey(Category, verbose_name=u'分类')
+    category = models.ForeignKey(Category, verbose_name=_(u'Category'))
 
     title = models.CharField(max_length=100, verbose_name=_(u'Title'))
     tags = models.CharField(max_length=100, null=True, blank=True,\
@@ -91,43 +91,43 @@ class Article(models.Model):
         return [tag.strip() for tag in self.tags.split(',')]
     
     @classmethod
-    def get_recently_posts(cls, num):
+    def get_recently_articles(cls, num):
         """
         A simple classmethod.
-        Use Post.get_recently_posts(RECENTLY_NUM) to get recently(RECENTLY_NUM) posts.
+        Use Article.get_recently_articles(RECENTLY_ARTICLES_NUM) to get recently(RECENTLY_ARTICLES_NUM) articles.
         """
         return cls.objects.values('title', 'view_times', 'update_time', 'author')\
             .filter(status=0).order_by('-update_time')[:num]
 
     @classmethod
-    def get_hots_posts(cls, num):
+    def get_hots_articles(cls, num):
         """
         A simple classmethod.
-        Use Post.get_hots_posts(HOT_NUM) to get hot(HOT_NUM) posts.
+        Use Article.get_hots_articles(HOT_ARTICLES_NUM) to get hot(HOT_ARTICLES_NUM) articles.
         """
         return cls.objects.values('title', 'view_times', 'update_time', 'author').\
                                 filter(status=0).order_by('-view_times'\
                                 )[:num]
 
-    def related_posts(self):
+    def related_articles(self, num):
         """
         A simple method.
-        Use post_object.related_posts to get related_posts of an object.
+        Use article_object.related_articles(REALITVE_ARTICLES_NUM) to get related_articles of an object.
         """
-        related_posts = None
+        related_articles = None
         try:
-            related_posts = Post.objects.values('title', 'view_times', 'update_time', 'author').\
+            related_articles = Post.objects.values('title', 'view_times', 'update_time', 'author').\
                 filter(tags__icontains=self.tags_list()[0]).\
-                exclude(id=self.id)[:10]
+                exclude(id=self.id)[:num]
         except IndexError:
             pass
 
-        if not related_posts:
-            related_posts = Post.objects.values('title', 'view_times', 'update_time', 'author').\
+        if not related_articles:
+            related_articles = Post.objects.values('title', 'view_times', 'update_time', 'author').\
                 filter(category=self.category).\
-                exclude(id=self.id)[:10]
+                exclude(id=self.id)[:num]
 
-        return related_posts
+        return related_articles
 
 
     class Meta:
