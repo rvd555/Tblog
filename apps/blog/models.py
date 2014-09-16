@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 
 # import ugettext_lazy for location
 from django.utils.translation import ugettext_lazy as _
+# for markdown editor
+from wmd import models as wmd_models
 
 # Constants
 STATUS = {
@@ -63,6 +65,7 @@ class Category(models.Model):
 class Article(models.Model):
     """
     A simple model.
+    Use Article.get_articles(CATEGORY=None, TAG=None, NUM=100) to get available articles list.
     Use Article.get_recently_articles(RECENTLY_ARTICLES_NUM) to get recently(RECENTLY_ARTICLES_NUM) articles.
     Use Article.get_hots_articles(HOT_ARTICLES_NUM) to get hot(HOT_ARTICLES_NUM) articles.
     Use article_object.related_articles(REALITVE_ARTICLES_NUM) to get related_articles of an object.
@@ -74,7 +77,8 @@ class Article(models.Model):
     tags = models.CharField(max_length=100, null=True, blank=True,\
                             verbose_name=_(u'Tags'), help_text=_(u"Use the comma(',') separated"))
 
-    content = models.TextField(verbose_name=_(u'Content'))
+    # content = models.TextField(verbose_name=_(u'Content'))
+    content = wmd_models.MarkDownField(verbose_name=_(u'Content'))
 
     status = models.IntegerField(default=0, choices=STATUS.items(), verbose_name=_(u'Status'))
     view_times = models.IntegerField(default=1)
@@ -89,6 +93,49 @@ class Article(models.Model):
     
     def tags_list(self):
         return [tag.strip() for tag in self.tags.split(',')]
+
+    @classmethod
+    def get_articles(cls, CATEGORY=None, TAG=None, NUM=100):
+        """
+        A simple classmethod.
+        Use Article.get_articles(CATEGORY=None, TAG=None, NUM=100) to get articles list.
+        """
+        if CATEGORY:
+            article_list = cls.objects.filter(Q(status=0) & Q(category__icontains=CATEGORY))[:NUM]
+            return article_list
+        if TAG:
+            article_list = cls.objects.filter(Q(status=0) & Q(tags__icontains=TAG))[:NUM]
+            return article_list
+        return cls.objects.filter(status=0)[:NUM]
+
+    # @classmethod
+    # def get_all_tags_list(cls):
+    #     """
+    #     A simple classmethod.
+    #     Use Article.get_all_tags_list() to get all_tags_list from articles.
+    #     """
+    #     all_tags_list = []
+    #     obj_list = cls.objects.values('tags').filter(status=0).order_by('-update_time')
+    #     for obj in obj_list:
+    #         for tag in obj.tags.split(','):
+    #             all_tags_list.append(tag)
+    #     return all_tags_list
+
+    @classmethod
+    def get_all_tags_list(cls):
+        """
+        A simple classmethod.
+        Use Article.get_all_tags_list() to get all articles' tags list.
+        """
+        all_tags_list = []
+        # obj_list = cls.objects.filter(status=0).order_by('-update_time')
+        obj_list = Article.get_articles(NUM=1000)
+        for obj in obj_list:
+            all_tags_list = all_tags_list + obj.tags_list()
+            # for tag in obj.tags.split(','):
+            #     all_tags_list.append(tag)
+        return all_tags_list
+
     
     @classmethod
     def get_recently_articles(cls, num):
@@ -105,7 +152,7 @@ class Article(models.Model):
         A simple classmethod.
         Use Article.get_hots_articles(HOT_ARTICLES_NUM) to get hot(HOT_ARTICLES_NUM) articles.
         """
-        return cls.objects.values('title', 'view_times', 'update_time', 'author').\
+        return cls.objects.values('title', 'view_times', 'update_time', 'author', 'content').\
                                 filter(status=0).order_by('-view_times'\
                                 )[:num]
 

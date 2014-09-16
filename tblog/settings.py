@@ -42,6 +42,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # django-wmd-editor,markdown editor(used in admin)
+    'wmd',
+    # markdown_deux,convert markdown to html(used in template).
+    'markdown_deux',
     # My apps
     'apps.blog',
 )
@@ -159,3 +163,5 @@ TEMPLATE_DIRS = (
 )
 
 ## End
+# For django-wmd-editor,the markdown editor
+WMD_ADMIN_SHOW_PREVIEW = True

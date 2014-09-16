@@ -30,14 +30,7 @@
             </div>
 
             <div class="">
-              {% trans "Other Categorys" %}
-                <ul class="nav nav-pills">
-                    {% for category in categories %}
-                    {% if not category.is_nav %}
-                    <li><a href="/category/{{ category.alias }}/">{{ category.name }}</a></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
+              
             </div>
         </div>
         
