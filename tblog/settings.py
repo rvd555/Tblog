@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 
 
 """
@@ -59,7 +59,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
 )
 
 ROOT_URLCONF = 'tblog.urls'
@@ -102,7 +102,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-###Begin added for suit by Tulpar,20140908
+# Begin added for suit by Tulpar,20140908
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.contrib.auth.context_processors.auth',
@@ -121,7 +121,7 @@ SUIT_CONFIG = {
     # menu
     # 'SEARCH_URL': '/admin/auth/user/',
     'MENU_ICONS': {
-    #    'sites': 'icon-leaf',
+        #    'sites': 'icon-leaf',
         'auth': 'icon-lock',
         'blog': 'icon-leaf',
     },
@@ -144,9 +144,9 @@ SUIT_CONFIG = {
     # misc
     # 'LIST_PER_PAGE': 15
 }
-#### End
+# End
 
-## Begin. Settings for MEDIA, STATIC, TEMPLATE
+# Begin. Settings for MEDIA, STATIC, TEMPLATE
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media'),
 MEDIA_URL = '/media/'
 
@@ -156,12 +156,12 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     #os.path.join(BASE_DIR, 'public/static/'),
-    )
+)
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'public/templates/'),
 )
 
-## End
+# End
 # For django-wmd-editor,the markdown editor
 WMD_ADMIN_SHOW_PREVIEW = True
