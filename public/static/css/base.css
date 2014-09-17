@@ -22,13 +22,13 @@ a {
 }
 .footer {
 	width: 1265px;
-	border: solid gray 1px;
+	
 	height: 50px;
 	text-align: center;
 }
 .left {
 	width: 1000px;
-	border: solid gray 1px;
+	
 	height: 530px;
 
 	float: left;

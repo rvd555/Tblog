@@ -1,5 +1,6 @@
 # Tblog
-效果预览：[tulpar.ngrok.com](http://tulpar.ngrok.com/blog/index)
+效果预览：[tulpar.ngrok.com](http://tulpar.ngrok.com/blog/index)   
+测试帐号tulpar，密码qwe  
 ## 目前状态：
 后台功能完成了一部分，    
 前台什么都没写，很丑陋的状态，有些链接还无效，没有接。。。。   
