@@ -1,0 +1,9 @@
+Django==1.7
+argparse==1.2.1
+django-markdown-deux==1.0.4
+django-pagination==1.0.7
+django-suit==0.2.10
+-e git://github.com/marcuswhybrow/django-wmd-editor.git@ae5b364f7982310971d5ecbaf741d8e5ec59ee2b#egg=django_wmd_editor-master
+markdown2==2.2.3
+pep8==1.5.7
+wsgiref==0.1.2
