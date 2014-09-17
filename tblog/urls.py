@@ -2,11 +2,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
 urlpatterns = patterns('',
-    # url(r'^$', 'tblog.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-    url(r'^blog/', include('apps.blog.urls')),
-    url(r'^admin/', include(admin.site.urls)),
-)
+                       # url(r'^$', 'tblog.views.home', name='home'),
+                       # url(r'^blog/', include('blog.urls')),
+                       url(r'^blog/', include('apps.blog.urls')),
+                       url(r'^admin/', include(admin.site.urls)),
+                       )
 
 
 urlpatterns += patterns(
@@ -22,15 +22,15 @@ urlpatterns += patterns(
 from django.conf import settings
 
 urlpatterns += patterns('',
-    url(r"^media/(?P<path>.*)$",
-        "django.views.static.serve",
-        {"document_root": settings.MEDIA_ROOT}
-        ),
-)
+                        url(r"^media/(?P<path>.*)$",
+                            "django.views.static.serve",
+                            {"document_root": settings.MEDIA_ROOT}
+                            ),
+                        )
 
 urlpatterns += patterns('',
-    url(r"^static/(?P<path>.*)$",
-        "django.views.static.serve",
-        {"document_root": settings.STATIC_ROOT}
-        ),
-    )
+                        url(r"^static/(?P<path>.*)$",
+                            "django.views.static.serve",
+                            {"document_root": settings.STATIC_ROOT}
+                            ),
+                        )

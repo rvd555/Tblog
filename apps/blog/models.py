@@ -25,14 +25,17 @@ class Category(models.Model):
 
     """
     Category model to be used for categorization of content.
-    Categories are high level constructs to be used for grouping and organizing content, 
+    Categories are high level constructs to be used for grouping and organizing content,
     thus creating a site's table of contents.
     #
     Use Category.available_list(AVAILABLE_CATEGORYS_NUM) to get available categorys list.
     """
     name = models.CharField(max_length=40, verbose_name=_(u'Name'))
-    desc = models.CharField(max_length=100, blank=True,
-                            verbose_name=_(u'Description'), help_text=_(u'Description of a category.'))
+    desc = models.CharField(max_length=100,
+                            blank=True,
+                            verbose_name=_(u'Description'),
+                            help_text=_(u'Description of a category.')
+                            )
 
     is_nav = models.BooleanField(
         default=False, verbose_name=_(u'Display on the navbar.'))

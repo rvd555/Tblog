@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='article',
             name='category',
-            field=models.ForeignKey(verbose_name='Category', to='blog.Category'),
+            field=models.ForeignKey(
+                verbose_name='Category', to='blog.Category'),
         ),
         migrations.AlterField(
             model_name='article',

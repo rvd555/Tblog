@@ -53,7 +53,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
-    #'django.middleware.common.commonMiddleware',
+    # 'django.middleware.common.commonMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -83,7 +83,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 LANGUAGE_CODE = 'zh'
-#LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
@@ -144,7 +144,7 @@ SUIT_CONFIG = {
 
         # {'app': 'apps.blog', 'icon':'icon-leaf', 'models': ('Article', 'Category')},
         # {'label': _('Blog'), 'icon':'icon-leaf', 'models': ('apps.blog.Article', 'apps.blog.Category')},
-        #{'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
+        # {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
     ),
 
     # misc
@@ -162,9 +162,9 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     # os.path.join(BASE_DIR, 'public/static/blog/'),
-    ("css", os.path.join(STATIC_ROOT,'css')),
-    ("js", os.path.join(STATIC_ROOT,'js')),
-    ("images", os.path.join(STATIC_ROOT,'images')),
+    ("css", os.path.join(STATIC_ROOT, 'css')),
+    ("js", os.path.join(STATIC_ROOT, 'js')),
+    ("images", os.path.join(STATIC_ROOT, 'images')),
 )
 
 TEMPLATE_DIRS = (
