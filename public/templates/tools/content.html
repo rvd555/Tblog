@@ -1,0 +1,25 @@
+{% load markdown_deux_tags %}
+{% load i18n %}
+{{ detail.content |markdown }}<BR>
+<div class="related_articles">
+	<ul>
+		{% trans "Related articles:" %}
+	{% for item in related_articles %}
+	<li><a href="{% url 'apps.blog.views.detail' id=item.id %}">{{ item.title }}</a></li>
+	{% endfor %}
+	</ul>
+</div>
+<!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ymj"};
+(function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = 'http://static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+|| document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+<!-- Duoshuo Comment END -->

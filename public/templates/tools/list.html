@@ -1,0 +1,9 @@
+{% load pagination_tags %}
+{% load markdown_deux_tags %}
+{% autopaginate articles_list 10 %}
+{% for item in articles_list %}
+
+<h3><a href="{% url 'apps.blog.views.detail' id=item.id %}">{{ item.title }}</h3></a>
+<p>{{ item.content | markdown | slice:"6"}}</p>
+{% endfor %}
+{% paginate %}

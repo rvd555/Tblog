@@ -1,31 +1,4 @@
 {% extends "base.html" %}
-{% load markdown_deux_tags %}
-{%  block extend_style %}
-<style type="text/css">
-.title {
-	color:red;
-	font-size:20px;
-}
-</style>
-{% endblock %}
-{% block main %}
-<span class="title">Navbar:</span>
-{% for item in available_category_list %}
-{{ item }}&nbsp;&nbsp;&nbsp;&nbsp;|
-{% endfor %}<BR><BR><BR>
-<span class="title" >hot_article_list:</span><BR>
-{% for item in hot_article_list %}
-<!-- {{ item.title }}<BR> -->
-neirong:{{ item.content | markdown }}<BR>
-{% endfor %}
-<span class="title" >recently_articles_list:</span><BR>
-{% for item in articles_list %}
-{{ item.title }}<BR>
-{% endfor %}
-<BR><span class="title" >
-	Tags:</span>
-	<BR>
-{% for item in all_tags_list %}
-{{ item }}<BR>
-{% endfor %}
+{% block left %}
+{% include 'tools/list.html' %}
 {% endblock %}

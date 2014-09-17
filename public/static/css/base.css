@@ -1,0 +1,62 @@
+.top {
+	width: 1265px;
+	border: solid gray 1px;
+	height: 50px;
+	text-align: center;
+}
+.top li {
+	float: left;
+	list-style: none;
+	border: solid gray 1px;
+	margin-right: 10px;
+	padding: 5px;
+	
+}
+a {
+	text-decoration: none;
+}
+.main {
+	width: 1265px;
+	border: solid gray 1px;
+	height: 530px;
+}
+.footer {
+	width: 1265px;
+	border: solid gray 1px;
+	height: 50px;
+	text-align: center;
+}
+.left {
+	width: 1000px;
+	border: solid gray 1px;
+	height: 530px;
+
+	float: left;
+}
+.right {
+	width: 250px;
+	border: solid gray 1px;
+	height: 530px;
+	float: left;
+}
+.hot {
+	width: 250px;
+	border: solid gray 1px;
+	height: 170px;
+}
+.recently {
+	width: 250px;
+	border: solid gray 1px;
+	height: 170px;
+}
+.tags {
+	width: 250px;
+	border: solid gray 1px;
+	height: 170px;
+}
+.related_articles span {
+	width: 260px;
+}
+.related_articles {
+	width: 525px;
+}

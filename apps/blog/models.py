@@ -111,14 +111,14 @@ class Article(models.Model):
         """
         related_articles = None
         try:
-            related_articles = Article.objects.values('title', 'view_times', 'update_time', 'author').\
+            related_articles = Article.objects.values('id', 'title', 'view_times', 'update_time', 'author').\
                 filter(tags__icontains=self.tags_list()[0]).\
                 exclude(id=self.id)[:num]
         except IndexError:
             pass
 
         if not related_articles:
-            related_articles = Article.objects.values('title', 'view_times', 'update_time', 'author').\
+            related_articles = Article.objects.values('id', 'title', 'view_times', 'update_time', 'author').\
                 filter(category=self.category).\
                 exclude(id=self.id)[:num]
 
@@ -170,7 +170,7 @@ class Article(models.Model):
         A simple classmethod.
         Use Article.get_hots_articles(HOT_ARTICLES_NUM) to get hot(HOT_ARTICLES_NUM) articles.
         """
-        return cls.objects.values('title', 'view_times', 'update_time', 'author').\
+        return cls.objects.values('id', 'title', 'view_times', 'update_time', 'author').\
             filter(status=0).order_by('-view_times'
                                       )[:num]
 

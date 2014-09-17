@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load i18n %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}
+            {% blocktrans %} T-Blog.{% endblocktrans %}
+            {% endblock %} </title>
+        
+        {%  block extend_style %}{% endblock %}
+    </head>
+    <body>
+
+                    {% for category in categories %}
+                    {% if category.is_nav %}
+                    <li><a href="/category/{{ category.alias }}/">{{ category.name }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <div class="row">
+                <div id="main" class="span9">
+                    {% block main %}{% endblock %}
+                </div>
+
+                <div class="sidebar span3">
+                   
+                </div>
+            </div>
+
+            <div class="">
+              
+            </div>
+        </div>
+        
+
+
+    </body>
+</html>

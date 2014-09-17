@@ -43,6 +43,7 @@ class Index(object):
     A base class for blog index context.
     Use Index_obj.get_context() to get index_context.
     """
+
     index_context = {}
 
     def get_context(self):
@@ -62,5 +63,6 @@ class Detail(object):
     def get_context(self, id):
         base_context = (Base()).get_base_context(NUM=10)
         base_context["detail"] = Article.objects.get(id=id)
+        base_context["related_articles"] = (Article.objects.get(id=id)).related_articles(10)
         context = base_context
         return context

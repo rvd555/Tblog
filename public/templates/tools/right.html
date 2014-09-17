@@ -1,0 +1,25 @@
+{% load i18n %}
+<div class="hot">
+	{% trans "hot articles:" %}<br>
+	{% for item in hot_article_list %}
+
+<a href="{% url 'apps.blog.views.detail' id=item.id %}">{{ item.title }}</a><BR>
+
+{% endfor %}
+</div>
+<div class="recently">
+	{% trans "recently articles:" %}<br>
+		{% for item in articles_list %}
+
+<a href="{% url 'apps.blog.views.detail' id=item.id %}">{{ item.title }}</a><BR>
+
+{% endfor %}
+</div>
+<div class="tags">
+	{% trans "tags:" %}<br>
+	{% for item in all_tags_list %}
+
+<a href="">{{ item }}</a>&nbsp;&nbsp;
+
+{% endfor %}
+</div>
