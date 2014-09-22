@@ -16,7 +16,7 @@ class ArticleAdmin(admin.ModelAdmin):
     A simple AdminModel for Article.
     """
     search_fields = ('title',)
-    fields = ('content', 'title', 'category', 'tags', 'status',
+    fields = ('title', 'title_image','summary', 'content', 'category', 'tags', 'status',
               'is_top',)
 
     list_display = ('title', 'is_top', 'update_time')

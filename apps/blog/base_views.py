@@ -17,7 +17,7 @@ class Base(object):
     """
 
     def get_base_context(self,
-                         AVAILABLE_CATEGORYS_NUM=10,
+                         AVAILABLE_CATEGORYS_NUM=100,
                          HOT_ARTICLES_NUM=10,
                          CATEGORY=None,
                          TAG=None,
@@ -27,6 +27,7 @@ class Base(object):
         try:
             base_context['available_category_list'] = Category.available_list(
                 AVAILABLE_CATEGORYS_NUM)
+            base_context['navbar_category_list'] = Category.navbar_list()
             base_context['hot_article_list'] = Article.get_hots_articles(
                 HOT_ARTICLES_NUM)
             base_context['articles_list'] = Article.get_articles(

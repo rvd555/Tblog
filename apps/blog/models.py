@@ -7,11 +7,16 @@ from datetime import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinLengthValidator
 
 # import ugettext_lazy for location
 from django.utils.translation import ugettext_lazy as _
 # for markdown editor
 from wmd import models as wmd_models
+# for image in Article.thumbnail
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
+
 
 # Constants
 STATUS = {
@@ -64,6 +69,14 @@ class Category(models.Model):
         """
         return cls.objects.filter(status=0)[:num]
 
+    @classmethod
+    def navbar_list(cls):
+        """
+        A simple classmethod.
+        Use Category.navbar_list() to get navbar categorys list.
+        """
+        return cls.objects.filter(status=0).filter(is_nav=True)[:10]
+
     class Meta:
         ordering = ['rank', '-create_time']
         verbose_name_plural = verbose_name = _(u"Category")
@@ -85,8 +98,16 @@ class Article(models.Model):
     tags = models.CharField(max_length=100, null=True, blank=True,
                             verbose_name=_(u'Tags'), help_text=_(u"Use the comma(',') separated"))
 
-    # content = models.TextField(verbose_name=_(u'Content'))
+    summary = models.TextField(verbose_name=_(u'Summary'),
+        validators=[MinLengthValidator(30)],
+        error_messages={"min_length":_("At least %(limit_value)d word,please!(it has %(show_value)d).")}
+        )
     content = wmd_models.MarkDownField(verbose_name=_(u'Content'))
+
+    title_image = ProcessedImageField(upload_to='thumbnail',
+        processors=[ResizeToFill(70, 70)],
+        format='JPEG',options={'quality': 60}
+        )
 
     status = models.IntegerField(
         default=0, choices=STATUS.items(), verbose_name=_(u'Status'))

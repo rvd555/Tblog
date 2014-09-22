@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-18 00:16+0800\n"
-"PO-Revision-Date: 2014-09-18 00:18+0800\n"
+"POT-Creation-Date: 2014-09-23 00:15+0800\n"
+"PO-Revision-Date: 2014-09-23 00:16+0800\n"
 "Last-Translator: Tulpar <tulpar008@gmail.com>\n"
 "Language-Team: Tulpar\n"
 "Language: zh_CN\n"
@@ -17,120 +17,140 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Virtaal 0.7.0\n"
 
-#: apps/blog/models.py:18
+#: apps/blog/models.py:23
 msgid "Publish"
 msgstr "发布"
 
-#: apps/blog/models.py:19
+#: apps/blog/models.py:24
 msgid "Draft"
 msgstr "草稿"
 
-#: apps/blog/models.py:20
+#: apps/blog/models.py:25
 msgid "Delete"
 msgstr "删除"
 
-#: apps/blog/models.py:33
+#: apps/blog/models.py:38
 msgid "Name"
 msgstr "名字"
 
-#: apps/blog/models.py:35
+#: apps/blog/models.py:41
 msgid "Description"
 msgstr "描述"
 
-#: apps/blog/models.py:35
+#: apps/blog/models.py:42
 msgid "Description of a category."
 msgstr "描述"
 
-#: apps/blog/models.py:38
+#: apps/blog/models.py:46
 msgid "Display on the navbar."
 msgstr "是否显示在导航条上"
 
-#: apps/blog/models.py:41
+#: apps/blog/models.py:49
 msgid "Parent category."
 msgstr "父级分类"
 
-#: apps/blog/models.py:43
+#: apps/blog/models.py:51
 msgid "Display order."
 msgstr "显示顺序"
 
-#: apps/blog/models.py:45 apps/blog/models.py:89
+#: apps/blog/models.py:53 apps/blog/models.py:113
 msgid "Status"
 msgstr "状态"
 
-#: apps/blog/models.py:47 apps/blog/models.py:95
+#: apps/blog/models.py:55 apps/blog/models.py:119
 msgid "Create Time"
 msgstr "创建时间"
 
-#: apps/blog/models.py:48 apps/blog/models.py:96
+#: apps/blog/models.py:56 apps/blog/models.py:120
 msgid "Update Time"
 msgstr "更新时间"
 
-#: apps/blog/models.py:66 apps/blog/models.py:79
+#: apps/blog/models.py:82 apps/blog/models.py:95
 msgid "Category"
 msgstr "分类"
 
-#: apps/blog/models.py:78
-#| msgid "Auth"
+#: apps/blog/models.py:94
 msgid "Author"
 msgstr "作者"
 
-#: apps/blog/models.py:81
+#: apps/blog/models.py:97
 msgid "Title"
 msgstr "题目"
 
-#: apps/blog/models.py:83
+#: apps/blog/models.py:99
 msgid "Tags"
 msgstr "标签"
 
-#: apps/blog/models.py:83
+#: apps/blog/models.py:99
 msgid "Use the comma(',') separated"
 msgstr "用英文','分隔"
 
-#: apps/blog/models.py:86
+#: apps/blog/models.py:101
+msgid "Summary"
+msgstr "概要"
+
+#: apps/blog/models.py:103
+#, python-format
+msgid "At least %(limit_value)d word,please!(it has %(show_value)d)."
+msgstr "至少输入%(limit_value)d个字符，你才输入了%(show_value)d个"
+
+#: apps/blog/models.py:105
 msgid "Content"
 msgstr "内容"
 
-#: apps/blog/models.py:92
+#: apps/blog/models.py:116
 msgid "Top"
 msgstr "置顶"
 
-#: apps/blog/models.py:179
+#: apps/blog/models.py:203
 msgid "Article"
 msgstr "文章"
 
-#: public/templates/base.html:7 public/templates0/base.html:7
-#, fuzzy
-#| msgid "T-Blog"
+#: public/templates/module/right.html:20
+msgid "Recent Articles"
+msgstr "最近的文章"
+
+#: public/templates/module/right.html:38
+msgid "Hot Articles"
+msgstr "热点文章"
+
+#: public/templates/pagination.html:5 public/templates/pagination.html.py:7
+msgid "previous"
+msgstr "前一页"
+
+#: public/templates/pagination.html:21 public/templates/pagination.html:23
+msgid "next"
+msgstr "后一页"
+
+#: public/templates0/base.html:7 public/templates1/base.html:7
 msgid " T-Blog."
 msgstr "Tulpar的博客"
 
-#: public/templates/base.html:31
+#: public/templates1/base.html:31
 msgid "This is Footer"
 msgstr "页面底部"
 
-#: public/templates/tools/content.html:6
+#: public/templates1/tools/content.html:6
 msgid "Related articles:"
 msgstr "相关文章"
 
-#: public/templates/tools/navbar.html:3
+#: public/templates1/tools/navbar.html:3
 msgid "Navbar:"
 msgstr "导航条"
 
-#: public/templates/tools/right.html:3
-#, fuzzy
-#| msgid "Article"
+#: public/templates1/tools/right.html:3
 msgid "hot articles:"
-msgstr "文章"
+msgstr "热点文章"
 
-#: public/templates/tools/right.html:11
+#: public/templates1/tools/right.html:11
 msgid "recently articles:"
 msgstr "最近的文章"
 
-#: public/templates/tools/right.html:19
+#: public/templates1/tools/right.html:19
 msgid "tags:"
 msgstr "标签"
 
-#: tblog/settings.py:119
+#: tblog/settings.py:121
 msgid "T-Blog"
 msgstr "Tulpar的博客"
 

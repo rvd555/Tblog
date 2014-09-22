@@ -1,0 +1,58 @@
+	{% load i18n %}
+	<ul>
+						<li>
+							<div class="right-list">
+								<a class="icon-user-md" href="#"></a>
+								<a class="icon-envelope" href="#"></a><span class="profile">tulpar008@gmail.com</span>
+								<a class="icon-github" href="#"></a><a href="https://github.com/tulpar008" class="profile">My Github</a>
+								<BR>
+								<div class="photo">
+									<a class="icon-camera" href="#"></a>
+									<a class="icon-book" href="#"></a>
+									<a class="icon-music" href="#"></a>
+								</div>
+								
+
+							</div>
+							<div class="right-circle"><div></div><div></div><div></div><div></div><div></div><div></div></div></li>
+						<li>
+							<div class="right-list">
+								<a class="icon-time" href="#"></a><a class="right-title" href="#">{% trans "Recent Articles" %}</a>
+								{% for item in articles_list %}
+								<a class="right-list-title" href="/blog/detail/{{item.id}}/">{{ item.title }}.</a>
+								{% endfor %}
+								<a class="icon-refresh icon-spin right-list-more" href="#"></a><a class="right-list-more" href="#">more</a>
+							</div>
+							<div class="right-circle"><div></div><div></div><div></div><div></div><div></div><div></div></div></li>
+						<li>
+							<div class="right-list">
+								<a class="icon-heart-empty" href="#"></a><a class="right-title" href="#">{% trans "Hot Articles"%}</a>
+								{% for item in hot_article_list %}
+								<a class="right-list-title" href="/blog/detail/{{item.id}}/">{{ item.title }}</a>
+								{% endfor %}
+								
+								<a class="icon-spinner icon-spin right-list-more" href="#"></a><a class="right-list-more" href="#">more</a>	
+							</div>
+							<div class="right-circle"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+						</li>
+						<li>
+							<div class="right-list">
+								<a class="icon-tags" href="#"></a><a class="right-list-tags-title" href="#">{% trans "Tags"%}</a>
+								{% for item in all_tags_list %}
+								<a class="right-list-tags" href="#">{{ item }}</a>
+								{% endfor %}
+								
+							</div>
+							<div class="right-circle"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+						</li>
+						<li>
+							<div class="right-list">
+								<a class=" icon-folder-open" href="#"></a><a class="right-list-tags-title" href="#">{% trans "Categorys"%}</a>
+								{% for item in available_category_list %}
+								<a class="right-list-tags" href="#">{{ item }}</a>
+								{% endfor %}
+								
+							</div>
+							<div class="right-circle"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+						</li>
+				</ul>

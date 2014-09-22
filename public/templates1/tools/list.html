@@ -3,7 +3,7 @@
 {% autopaginate articles_list 2 %}
 {% for item in articles_list %}
 
-<h3><a href="{% url 'apps.blog.views.detail' id=item.id %}">{{ item.title }}</h3></a>
+<h3><a href="">{{ item.title }}</h3></a>
 <p>{{ item.content | markdown | slice:"15"}}</p>
 {% endfor %}
 {% paginate %}

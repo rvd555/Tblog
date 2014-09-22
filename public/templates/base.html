@@ -1,39 +1,40 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 {% load i18n %}
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>{% block title %}
-            {% blocktrans %} T-Blog.{% endblocktrans %}
-            {% endblock %} </title>
-        <link rel="stylesheet" type="text/css" href="/static/css/base.css">
-        {%  block extend_style %}{% endblock %}
-    </head>
-    <body>
-        <div class="top">
-            
-            {% include "tools/navbar.html" %}
-            {% block top %}{% endblock %}
-            </div>
-        <div class="main">
-            {% block main %}
-            <div class="left">
+<html>
+<head>
+	<title>
+		{% block title %}{% endblock %}
+    </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="http://cdn.bootcss.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+	<!-- <link rel="stylesheet" href="font-awesome.min.css"/> -->
 
-            {% block left %}{% endblock %}
-            </div>
-            <div class="right">
-                {% include "tools/right.html" %}
-            {% block right %}{% endblock %}
-            </div>
-            {% endblock %}
-            </div>
-        <div class="footer">
-            {% trans "This is Footer" %}
-            {% block extend_footer %}{% endblock %}
-            </div>
-
-        
-
-
-    </body>
-</html>
+	<link rel="stylesheet" type="text/css" href="/static/css/base.css"/>
+	{%  block extend_style %}{% endblock %}
+<!-- ....................................... --> 
+</head>
+<body>
+	<div class="body">
+		<div class="navbar">
+			{% include 'module/navbar.html'%}
+			</div>
+		<div class="pic">
+			{% block pic %}{% endblock %}
+		</div>
+		<div class="container">
+			<div class="container-body">
+				<div class="left-title">{% block left-title %}{% endblock %}</div>
+				<div class="left">
+					{% block left %}{% endblock %}
+				</div>
+				<div class="right">
+					{% include 'module/right.html' %}
+					{% block right-extra %}{% endblock %}
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<span>Copyright © 2014-2015 - tulpar - Powered by Python & Django</span>
+		</div>
+		</div>
+</body>

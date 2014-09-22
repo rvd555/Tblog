@@ -47,6 +47,8 @@ INSTALLED_APPS = (
     'wmd',
     # markdown_deux,convert markdown to html(used in template).
     'markdown_deux',
+    # for image file in model Article
+    'imagekit',
     # My apps
     'apps.blog',
 )
@@ -153,8 +155,8 @@ SUIT_CONFIG = {
 # End
 
 # Begin. Settings for MEDIA, STATIC, TEMPLATE
-MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media'),
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "public/media")
+MEDIA_URL = "/media/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'public/static/')
 

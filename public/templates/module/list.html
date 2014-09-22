@@ -1,0 +1,18 @@
+{% load pagination_tags %}
+{% load i18n %}
+{% load markdown_deux_tags %}
+{% load imagekit %}
+{% autopaginate articles_list 9 %}
+<ul>
+	{% for item in articles_list %}
+						<li>
+							<span><a href="#" class="icon-thumbs-up"></a><a href="#" class=" icon-thumbs-down"></a></span>
+							<div class="list-title"><a href="/blog/detail/{{item.id}}/">{{ item.title | slice:"15" }}</a></div>
+
+							<a href="/blog/detail/{{item.id}}/"><img class="thumbnail" src="/media/{{ item.title_image }}"></a>
+							<p>{{ item.summary | slice:"150"}}</p>
+							<div class="circle"><div></div><div></div><div></div></div>
+						</li>
+	{% endfor %}
+	{% paginate %}
+					</ul>
