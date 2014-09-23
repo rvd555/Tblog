@@ -1,3 +1,6 @@
 {% extends "base.html" %}
 {% load markdown_deux_tags %}
+{% if message %}
+{% block left-title %}{{ message }}{% endblock %}
+{% endif %}
 {% block left %}{% include 'module/list.html' %}{% endblock %}

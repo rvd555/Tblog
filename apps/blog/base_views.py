@@ -53,6 +53,25 @@ class Index(object):
         return context
 
 
+class List(object):
+
+    """
+    A base class for blog index context.
+    Use List_obj.get_context() to get index_context.
+    """
+
+    index_context = {}
+
+    def get_context(self, CATEGORY=None, TAG=None):
+        base_context = (Base()).get_base_context(
+            NUM=100,
+            CATEGORY=CATEGORY,
+            TAG=TAG
+            )
+        context = base_context
+        return context
+
+
 class Detail(object):
 
     """
@@ -65,6 +84,6 @@ class Detail(object):
         base_context = (Base()).get_base_context(NUM=10)
         base_context["detail"] = Article.objects.get(id=id)
         base_context["related_articles"] = (Article.objects.get(id=id)).\
-                                            related_articles(10)
+            related_articles(10)
         context = base_context
         return context

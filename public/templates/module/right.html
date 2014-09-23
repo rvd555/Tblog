@@ -39,7 +39,7 @@
 							<div class="right-list">
 								<a class="icon-tags" href="#"></a><a class="right-list-tags-title" href="#">{% trans "Tags"%}</a>
 								{% for item in all_tags_list %}
-								<a class="right-list-tags" href="#">{{ item }}</a>
+								<a class="right-list-tags" href="/blog/tag/{{ item }}/">{{ item }}</a>
 								{% endfor %}
 								
 							</div>
@@ -49,7 +49,7 @@
 							<div class="right-list">
 								<a class=" icon-folder-open" href="#"></a><a class="right-list-tags-title" href="#">{% trans "Categorys"%}</a>
 								{% for item in available_category_list %}
-								<a class="right-list-tags" href="#">{{ item }}</a>
+								<a class="right-list-tags" href="/blog/category/{{ item.name }}/">{{ item.name }}</a>
 								{% endfor %}
 								
 							</div>

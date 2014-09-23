@@ -6,6 +6,7 @@ Contain Article.
 from datetime import datetime
 
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import User
 from django.core.validators import MinLengthValidator
 
@@ -30,10 +31,11 @@ class Category(models.Model):
 
     """
     Category model to be used for categorization of content.
-    Categories are high level constructs to be used for grouping and organizing content,
-    thus creating a site's table of contents.
+    Categories are high level constructs to be used for grouping and
+    organizing content,thus creating a site's table of contents.
     #
-    Use Category.available_list(AVAILABLE_CATEGORYS_NUM) to get available categorys list.
+    Use Category.available_list(AVAILABLE_CATEGORYS_NUM) to
+    get available categorys list.
     """
     name = models.CharField(max_length=40, verbose_name=_(u'Name'))
     desc = models.CharField(max_length=100,
@@ -45,8 +47,12 @@ class Category(models.Model):
     is_nav = models.BooleanField(
         default=False, verbose_name=_(u'Display on the navbar.'))
 
-    parent = models.ForeignKey('self', default=None,
-                               blank=True, null=True, verbose_name=_(u'Parent category.'))
+    parent = models.ForeignKey('self',
+                               default=None,
+                               blank=True,
+                               null=True,
+                               verbose_name=_(u'Parent category.')
+                               )
 
     rank = models.IntegerField(default=0, verbose_name=_(u'Display order.'))
     status = models.IntegerField(
@@ -65,7 +71,8 @@ class Category(models.Model):
     def available_list(cls, num):
         """
         A simple classmethod.
-        Use Category.available_list(AVAILABLE_CATEGORYS_NUM) to get available categorys list.
+        Use Category.available_list(AVAILABLE_CATEGORYS_NUM) to
+        get available categorys list.
         """
         return cls.objects.filter(status=0)[:num]
 
@@ -86,28 +93,41 @@ class Article(models.Model):
 
     """
     A simple model.
-    Use Article.get_articles(CATEGORY=None, TAG=None, NUM=100) to get available articles list.
-    Use Article.get_recently_articles(RECENTLY_ARTICLES_NUM) to get recently(RECENTLY_ARTICLES_NUM) articles.
-    Use Article.get_hots_articles(HOT_ARTICLES_NUM) to get hot(HOT_ARTICLES_NUM) articles.
-    Use article_object.related_articles(REALITVE_ARTICLES_NUM) to get related_articles of an object.
+    Use Article.get_articles(CATEGORY=None, TAG=None, NUM=100) to
+        get available articles list.
+    Use Article.get_recently_articles(RECENTLY_ARTICLES_NUM) to get
+        recently(RECENTLY_ARTICLES_NUM) articles.
+    Use Article.get_hots_articles(HOT_ARTICLES_NUM) to
+        get hot(HOT_ARTICLES_NUM) articles.
+    Use article_object.related_articles(REALITVE_ARTICLES_NUM) to
+        get related_articles of an object.
     """
     author = models.ForeignKey(User, verbose_name=_(u"Author"))
     category = models.ForeignKey(Category, verbose_name=_(u'Category'))
 
     title = models.CharField(max_length=100, verbose_name=_(u'Title'))
-    tags = models.CharField(max_length=100, null=True, blank=True,
-                            verbose_name=_(u'Tags'), help_text=_(u"Use the comma(',') separated"))
+    tags = models.CharField(max_length=100,
+                            null=True,
+                            blank=True,
+                            verbose_name=_(u'Tags'),
+                            help_text=_(u"Use the comma(',') separated")
+                            )
 
-    summary = models.TextField(verbose_name=_(u'Summary'),
+    summary = models.TextField(
+        verbose_name=_(u'Summary'),
         validators=[MinLengthValidator(30)],
-        error_messages={"min_length":_("At least %(limit_value)d word,please!(it has %(show_value)d).")}
-        )
+        error_messages={"min_length":
+                        _("At least %(limit_value)d word,please!\
+                            (it has %(show_value)d).")
+                        }
+    )
     content = wmd_models.MarkDownField(verbose_name=_(u'Content'))
 
     title_image = ProcessedImageField(upload_to='thumbnail',
-        processors=[ResizeToFill(70, 70)],
-        format='JPEG',options={'quality': 60}
-        )
+                                      processors=[ResizeToFill(70, 70)],
+                                      format='JPEG',
+                                      options={'quality': 60}
+                                      )
 
     status = models.IntegerField(
         default=0, choices=STATUS.items(), verbose_name=_(u'Status'))
@@ -131,7 +151,8 @@ class Article(models.Model):
     def related_articles(self, num):
         """
         A simple method.
-        Use article_object.related_articles(REALITVE_ARTICLES_NUM) to get related_articles of an object.
+        Use article_object.related_articles(REALITVE_ARTICLES_NUM) to
+            get related_articles of an object.
         """
         related_articles = None
         try:
@@ -152,11 +173,12 @@ class Article(models.Model):
     def get_articles(cls, CATEGORY=None, TAG=None, NUM=100):
         """
         A simple classmethod.
-        Use Article.get_articles(CATEGORY=None, TAG=None, NUM=100) to get articles list.
+        Use Article.get_articles(CATEGORY=None, TAG=None, NUM=100) to
+            get articles list.
         """
         if CATEGORY:
             article_list = cls.objects.filter(
-                Q(status=0) & Q(category__icontains=CATEGORY))[:NUM]
+                Q(status=0) & Q(category__name__icontains=CATEGORY))[:NUM]
             return article_list
         if TAG:
             article_list = cls.objects.filter(
@@ -183,7 +205,8 @@ class Article(models.Model):
     def get_recently_articles(cls, num):
         """
         A simple classmethod.
-        Use Article.get_recently_articles(RECENTLY_ARTICLES_NUM) to get recently(RECENTLY_ARTICLES_NUM) articles.
+        Use Article.get_recently_articles(RECENTLY_ARTICLES_NUM) to
+            get recently(RECENTLY_ARTICLES_NUM) articles.
         """
         return cls.objects.values('title', 'view_times', 'update_time', 'author')\
             .filter(status=0).order_by('-update_time')[:num]
@@ -192,7 +215,8 @@ class Article(models.Model):
     def get_hots_articles(cls, num):
         """
         A simple classmethod.
-        Use Article.get_hots_articles(HOT_ARTICLES_NUM) to get hot(HOT_ARTICLES_NUM) articles.
+        Use Article.get_hots_articles(HOT_ARTICLES_NUM) to
+            get hot(HOT_ARTICLES_NUM) articles.
         """
         return cls.objects.values('id', 'title', 'view_times', 'update_time', 'author').\
             filter(status=0).order_by('-view_times'
